@@ -15,7 +15,9 @@ import com.xin.ojcodesandbox.model.ExecuteCodeRequest;
 import com.xin.ojcodesandbox.model.ExecuteCodeResponse;
 import com.xin.ojcodesandbox.model.ExecuteMessage;
 import com.xin.ojcodesandbox.model.JudgeInfo;
+import com.xin.ojcodesandbox.service.CodeSandBox;
 import com.xin.ojcodesandbox.utils.ProcessUtils;
+import org.springframework.stereotype.Component;
 import org.springframework.util.StopWatch;
 
 import java.io.Closeable;
@@ -30,6 +32,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author 15712
  */
+@Component
 public class JavaDockerCodeSandBoxOld implements CodeSandBox {
     private static final String GLOBAL_CODE_DIR_NAME = "tmpCode";
 

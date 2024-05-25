@@ -1,21 +1,18 @@
 package com.xin.ojcodesandbox;
 
-import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.io.resource.ResourceUtil;
-import cn.hutool.core.lang.UUID;
 import cn.hutool.core.util.ArrayUtil;
-import cn.hutool.core.util.StrUtil;
 import com.github.dockerjava.api.DockerClient;
 import com.github.dockerjava.api.async.ResultCallback;
 import com.github.dockerjava.api.command.*;
 import com.github.dockerjava.api.model.*;
 import com.github.dockerjava.core.DockerClientBuilder;
 import com.github.dockerjava.core.command.ExecStartResultCallback;
+import com.xin.ojcodesandbox.service.python3.PythonCodeSandBoxTemplate;
 import com.xin.ojcodesandbox.model.ExecuteCodeRequest;
 import com.xin.ojcodesandbox.model.ExecuteCodeResponse;
 import com.xin.ojcodesandbox.model.ExecuteMessage;
-import com.xin.ojcodesandbox.model.JudgeInfo;
-import com.xin.ojcodesandbox.utils.ProcessUtils;
+import org.springframework.stereotype.Component;
 import org.springframework.util.StopWatch;
 
 import java.io.Closeable;
@@ -31,7 +28,8 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author 15712
  */
-public class JavaDockerCodeSandBox extends JavaCodeSandBoxTemplate {
+@Component
+public class JavaDockerCodeSandBox extends PythonCodeSandBoxTemplate {
 
     private static final long TIME_OUT = 5000L;
 
@@ -122,7 +120,6 @@ public class JavaDockerCodeSandBox extends JavaCodeSandBoxTemplate {
                     timeout[0] = false;
                     super.onComplete();
                 }
-
                 @Override
                 public void onNext(Frame frame) {
                     StreamType streamType = frame.getStreamType();

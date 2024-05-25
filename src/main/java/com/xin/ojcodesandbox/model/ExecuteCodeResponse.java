@@ -32,8 +32,10 @@ public class ExecuteCodeResponse {
      */
     private List<String> outputList;
 
+
     /**
      * 返回判题信息
      */
     private JudgeInfo judgeInfo;
+
 }
