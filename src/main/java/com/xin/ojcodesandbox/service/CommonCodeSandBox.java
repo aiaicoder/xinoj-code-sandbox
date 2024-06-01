@@ -63,12 +63,13 @@ public abstract class CommonCodeSandBox implements CodeSandBox {
             outputList.add(executeMessage.getMessage());
             Long time = executeMessage.getTime();
             if (time != null) {
-                maxTime = Math.max(time, maxTime);
+                maxTime = Math.max(maxTime, time);
+
             }
             Long memory = executeMessage.getMemory();
             if (memory != null)
             {
-                maxMemory = Math.max(maxMemory, memory);
+                maxMemory += memory;
             }
         }
         //没有错误信息

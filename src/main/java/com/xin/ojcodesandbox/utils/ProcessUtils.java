@@ -104,6 +104,7 @@ public class ProcessUtils {
             StopWatch stopWatch = new StopWatch();
             stopWatch.start();
             int exitCode = runProcess.waitFor();
+            stopWatch.stop();
             executeMessage.setExitCode(exitCode);
             if (exitCode == 0) {
                 // 分批获取进程的正常输出
@@ -140,7 +141,6 @@ public class ProcessUtils {
             long finalMemory = getUsedMemory();
             // 计算内存使用量，单位字节，转换成kb需要除以1024
             long memoryUsage = finalMemory - initialMemory;
-            stopWatch.stop();
             executeMessage.setTime(stopWatch.getTotalTimeMillis());
             executeMessage.setMemory(memoryUsage);
         } catch (Exception e) {
@@ -158,7 +158,6 @@ public class ProcessUtils {
         ExecuteMessage executeMessage = new ExecuteMessage();
 
         try (OutputStream outputStream = runProcess.getOutputStream(); OutputStreamWriter outputStreamWriter = new OutputStreamWriter(outputStream); InputStream inputStream = runProcess.getInputStream(); BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream))) {
-
             // Write arguments to the process's output stream
             String[] arguments = args.split(" ");
             for (String arg : arguments) {
