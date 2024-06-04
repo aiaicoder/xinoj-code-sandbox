@@ -118,7 +118,7 @@ public abstract class PythonCodeSandBoxTemplate extends CommonCodeSandBox implem
         String pythonCmdPrefix = "python";
         System.out.println("当前操作系统：" + osName);
         if (osName.contains("nix") || osName.contains("nux")) {
-            pythonCmdPrefix = "python";
+            pythonCmdPrefix = "python3";
         }
         for (String input : inputList) {
             String runCmd = String.format("%s %s", pythonCmdPrefix, userCodeFileAbsolutePath);

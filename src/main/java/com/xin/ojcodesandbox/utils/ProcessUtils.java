@@ -127,7 +127,7 @@ public class ProcessUtils {
                 while ((complieOutLine = bufferedReader.readLine()) != null) {
                     outputStrList.add(complieOutLine);
                 }
-                executeMessage.setMessage(StringUtils.join(outputStrList, '\n'));
+                executeMessage.setErrorMessage(StringUtils.join(outputStrList, '\n'));
                 //分批获取错误输出
                 BufferedReader bufferedReaderError = new BufferedReader(new InputStreamReader(runProcess.getErrorStream(), StandardCharsets.UTF_8));
                 //逐行读取
@@ -137,6 +137,7 @@ public class ProcessUtils {
                     errorOutputStrList.add(complieOutLineError);
                 }
                 executeMessage.setErrorMessage(StringUtils.join(errorOutputStrList, '\n'));
+
             }
             long finalMemory = getUsedMemory();
             // 计算内存使用量，单位字节，转换成kb需要除以1024

@@ -146,7 +146,7 @@ public abstract class CCodeSandboxTemplate extends CommonCodeSandBox implements 
             String osName = System.getProperty("os.name").toLowerCase();
 
             if (osName.contains("nix") || osName.contains("nux")) {
-                runCmd = String.format("%sMain", userCodeParentPath);
+                runCmd = String.format("%sMain", userCodeParentPath + File.separator);
             }
             try {
                 Process runProcess = Runtime.getRuntime().exec(runCmd);
